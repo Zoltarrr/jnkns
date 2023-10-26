@@ -14,12 +14,12 @@ pipeline {
                 '''
             }
         }
-        // stage('Build') {
-        //     steps {
-        //       echo "Building version: ${VERSION} with suffix: ${VERSION_RC}"
-        //       sh 'dotnet build -p:VersionPrefix="${VERSION}" --version-suffix "${VERSION_RC}" ./m3/src/Pi.Web/Pi.Web.csproj'
-        //     }
-        // }
+        stage('Build') {
+            steps {
+              echo "Building version: ${VERSION} with suffix: ${VERSION_RC}"
+              sh 'dotnet build -p:VersionPrefix="${VERSION}" --version-suffix "${VERSION_RC}" ./m3/src/Pi.Web/Pi.Web.csproj'
+            }
+        }
         stage('Unit Test') {
             steps {
               dir('./m3/src') {
